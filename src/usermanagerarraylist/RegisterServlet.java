@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 			urlPatterns = "/usermanagerarraylist/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -36,17 +36,19 @@ public class RegisterServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+		ArrayList<User> userlist = new ArrayList<>(); // 注册list只new一次 或者在init初始化中new注册用户列表
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8"); // 设置接收中文参数值
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		User user = new User(username, password);
-		ArrayList<User> userlist = new ArrayList<>();
 		userlist.add(user);
 		this.getServletContext().setAttribute("userlist", userlist);
 		response.setContentType("text/html;charset=utf-8");
 		response.getWriter().println("注册成功");
 	}
+
+
 
 }

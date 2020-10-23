@@ -36,6 +36,7 @@ public class LoginServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+		ArrayList<String> loginedUserNameList = new ArrayList<>();
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		/**
@@ -48,7 +49,6 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		ArrayList<User> userlist = (ArrayList<User>) this.getServletContext().getAttribute("userlist");
 		boolean loginrecsult = false;
-		ArrayList<String> loginedUserNameList = new ArrayList<>();
 		for (User user: userlist) {
 			if(user.getName().equals(username) && 
 			   user.getPassword().equals(password)) { // 合法用户
